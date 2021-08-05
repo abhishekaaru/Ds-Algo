@@ -1,0 +1,1 @@
+{"name":"Local: SnakeAndLadderGraph","url":"e:\\PROGRAMING FILES\\C++\\SnakeAndLadderGraph.cpp","tests":[{"id":1622893168481,"input":"2\n3 90\n56 76\n\n3 \n99 10\n30 20\n20 5","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\PROGRAMING FILES\\C++\\SnakeAndLadderGraph.cpp","group":"local","local":true}

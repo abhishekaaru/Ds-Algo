@@ -1,0 +1,1 @@
+{"name":"Local: PrimsAlgorithm","url":"e:\\PROGRAMING FILES\\C++\\PrimsAlgorithm.cpp","tests":[{"id":1622868491982,"input":"4 5\n0 1 10\n1 2 15 \n0 2 5\n3 1 2\n3 2 40","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\PROGRAMING FILES\\C++\\PrimsAlgorithm.cpp","group":"local","local":true}

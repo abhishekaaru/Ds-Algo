@@ -1,0 +1,1 @@
+{"name":"Local: BitonicSubseqMaxLength","url":"e:\\PROGRAMING FILES\\C++\\BitonicSubseqMaxLength.cpp","tests":[{"id":1623329165242,"input":"8\n1 11 2 10 4 5 2 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\PROGRAMING FILES\\C++\\BitonicSubseqMaxLength.cpp","group":"local","local":true}
