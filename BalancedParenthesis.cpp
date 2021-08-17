@@ -16,7 +16,7 @@ bool isValid(string s){
 
         else if(s[i]==')'){
             if(!st.empty() && st.top()=='('){
-                st.pop();
+                st.pop(); 
             }
             else{
                 ans=false;
