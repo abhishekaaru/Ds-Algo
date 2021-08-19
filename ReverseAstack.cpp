@@ -29,6 +29,42 @@ void reverse(stack<int> &st){
 
 }
 
+// Reverse a stack in O(1)
+void clonestack(stack<int> st, stack<int> &cloned)
+{
+    int k = 0;
+    int n = st.size();
+
+    while (k != n - 1)
+    {
+        int top = st.top();
+        st.pop();
+
+        while (k < st.size())
+        {
+            cloned.push(st.top());
+            st.pop();
+        }
+
+        st.push(top);
+
+        while (!cloned.empty())
+        {
+            st.push(cloned.top());
+            cloned.pop();
+        }
+
+        k++;
+    }
+
+    // clone
+    while (!st.empty())
+    {
+        cloned.push(st.top());
+        st.pop();
+    }
+}
+
 int main(){
 
     stack<int> s;
