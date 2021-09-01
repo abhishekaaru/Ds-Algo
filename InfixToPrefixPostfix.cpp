@@ -120,7 +120,7 @@ string infixToPrefix(string s){
 
 int main(){
 
-    cout<<infixToPostfix("(a-b/c)*(a/k-l)")<<endl;
+    cout<<infixToPostfix("(b*(c+d))+(a/e)")<<endl;
     cout<<infixToPrefix("(a-b/c)*(a/k-l)")<<endl;
 
     return 0;

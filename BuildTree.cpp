@@ -27,15 +27,14 @@ int search(int inorder[],int st,int en,int curr){
     return -1;
 }
 
-Node* BuildTreePreIn(int preorder[],int inorder[],int st,int en){
+Node* BuildTreePreIn(int preorder[],int inorder[],int st,int en,int *idx){
 
     if(st>en){
         return NULL;
     }
 
-    static int idx=0;
-    int curr = preorder[idx];
-    idx++;
+    int curr = preorder[*idx];
+    (*idx)++;
 
     Node* node=new Node(curr);
 
@@ -44,34 +43,33 @@ Node* BuildTreePreIn(int preorder[],int inorder[],int st,int en){
     }
 
     int pos = search(inorder,st,en,curr);
-    node->left = BuildTreePreIn(preorder,inorder,st,pos-1);
-    node->right = BuildTreePreIn(preorder,inorder,pos+1,en);
+    node->left = BuildTreePreIn(preorder,inorder,st,pos-1,idx);
+    node->right = BuildTreePreIn(preorder,inorder,pos+1,en,idx);
 
     return node;
 }
 
-Node* BuildTreePostIn(int postorder[],int inorder[],int st,int en){
+Node *BuildTreePostIn(int postorder[], int inorder[], int st, int en, int *idx)
+{
 
-    if(st>en){
+    if (st > en){
         return NULL;
     }
 
-    static int idx=4;
-    int curr = postorder[idx];
-    idx--;
+    int curr = postorder[*idx];
+    (*idx)--;
 
-    Node* node=new Node(curr);
-    
-    if(st==en){
+    Node *node = new Node(curr);
+
+    if (st == en){
         return node;
     }
 
-    int pos = search(inorder,st,en,curr);
-    node->right = BuildTreePostIn(postorder,inorder,pos+1,en);
-    node->left = BuildTreePostIn(postorder,inorder,st,pos-1);
+    int pos = search(inorder, st, en, curr);
+    node->right = BuildTreePostIn(postorder, inorder, pos + 1, en, idx);
+    node->left = BuildTreePostIn(postorder, inorder, st, pos - 1, idx);
 
     return node;
-    
 }
 
 void Inorderprint(Node* root){
@@ -90,9 +88,12 @@ int main(){
     int inorder[]={4,2,1,5,3};
     int postoder[]={4,2,5,3,1};
 
-    // Node* root = BuildTreePreIn(preorder,inorder,0,4);
+    int idxPost = 4;
+    int idxPre = 0;
 
-    Node* root = BuildTreePostIn(preorder,inorder,0,4);
+    // Node* root = BuildTreePreIn(preorder,inorder,0,4,&idxPre);
+
+    Node* root = BuildTreePostIn(preorder,inorder,0,4,&idxPost);
 
     Inorderprint(root);
 
