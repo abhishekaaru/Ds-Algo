@@ -14,7 +14,7 @@ struct Node{
     }
 };
 
-// case 1
+// case 1 (for subtree)
 void subtreeNodes(Node* root,int k){
 
     if(root==NULL || k<0){
@@ -32,8 +32,7 @@ void subtreeNodes(Node* root,int k){
 
 }
 
-// case 2
-
+// case 2 (for ancestor)
 int nodesatKdis(Node* root,Node* target,int k){
 
     if(root==NULL){
