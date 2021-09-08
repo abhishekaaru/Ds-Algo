@@ -54,7 +54,7 @@ Info largestBST(Node* root){
     return curr;
 }
 
-// Another way
+// 2nd way
 
 int size2(Node* root){
     if(root==NULL){
@@ -87,6 +87,50 @@ int largestBST2(Node *root)
 	}
 	
 	return max(largestBST2(root->left),largestBST2(root->right));
+}
+
+// 3rd way (GFG)
+
+vector<int> solve(Node *root)
+{
+    if (root == NULL)
+    {
+        return {true, 0, INT_MAX, INT_MIN};
+    }
+
+    // Leaf Node
+    if (root->left == NULL && root->right == NULL)
+    {
+        return {true, 1, root->data, root->data};
+    }
+
+    vector<int> l = solve(root->left);
+    vector<int> r = solve(root->right);
+
+    if (l[0] && r[0])
+    {
+        if (root->data > l[3] && root->data < r[2])
+        {
+            int minn = r[3];
+            int maxx = l[2];
+            if (maxx == INT_MAX)
+            {
+                maxx = root->data;
+            }
+            if (minn == INT_MIN)
+            {
+                minn = root->data;
+            }
+            return {true, l[1] + r[1] + 1, maxx, minn};
+        }
+    }
+    return {false, max(l[1], r[1]), 0, 0};
+}
+int largestBst3(Node *root)
+{
+    vector<int> v;
+    v = solve(root);
+    return v[1];
 }
 
 int main(){
