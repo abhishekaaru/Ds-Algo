@@ -56,3 +56,28 @@ void findPreSuc(Node *root, Node *&pre, Node *&suc, int key)
         findPreSuc(root->left, pre, suc, key);
     }
 }
+
+// only for Successor
+Node *inOrderSuccessor(Node *root, Node *x)
+{
+    if (root == NULL || x == NULL)
+    {
+        return NULL;
+    }
+
+    Node *suc = NULL;
+    while (root != NULL)
+    {
+
+        if (root->data <= x->data)
+        {
+            root = root->right;
+        }
+        else
+        {
+            suc = root;
+            root = root->left;
+        }
+    }
+    return suc;
+}
