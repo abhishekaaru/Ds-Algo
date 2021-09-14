@@ -12,6 +12,22 @@ void hanoi(int n,char src,char help,char des){
 
 }
 
+// GFG
+long long toh(int n, int from, int to, int aux)
+{
+    long long move = 0;
+
+    if (n >= 1)
+    {
+        move += toh(n - 1, from, aux, to);
+        cout << "move disk " << n << " from rod " << from << " to rod " << to << endl;
+        move++;
+        move += toh(n - 1, aux, to, from);
+    }
+
+    return move;
+}
+
 int main(){
 
     hanoi(3,'A','B','C');
