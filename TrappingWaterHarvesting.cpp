@@ -25,6 +25,26 @@ int rainWater(vector<int> a){
     return ans;
 }
 
+int maxArea(vector<int>&a) {
+        int i=0;
+        int j=a.size()-1;
+        
+        int ans=0;
+        
+        while(i<j){
+            int h = min(a[i],a[j]);
+            ans = max(ans,(j-i)*h);
+            
+            while(a[i]<=h && i<j){
+                i++;
+            }
+            while(a[j]<=h && i<j){
+                j--;
+            }
+        }
+        return ans;
+    }
+
 int main(){
     vector<int> a={0,1,0,2,1,0,1,3,2,1,2,1};
 
