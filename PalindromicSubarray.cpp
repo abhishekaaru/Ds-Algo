@@ -4,6 +4,48 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+string longestPalindrome(string s) {
+        int n = s.size();
+        
+        if(n == 0){
+            return "";
+        }
+        if(n == 1){
+            return s;
+        }
+        
+        int min_st=0;
+        int max_len=1;
+        
+        for(int i=0;i<n;){
+            if(n-i <= max_len/2){
+                break;
+            }
+            
+            int j=i,k=i;
+            
+            while(k<n-1 && s[k+1]==s[k]){
+                k++;
+            }
+            
+            i = k+1;
+            
+            while(k < n-1 && j>0 && s[k+1]==s[j-1]){
+                k++;
+                j--;
+            }
+            
+            int new_len = k-j+1;
+            
+            if(new_len > max_len){
+                min_st = j;
+                max_len = new_len;
+            }
+        }
+        
+        return s.substr(min_st,max_len);
+    }
+
  bool isPalindrome(string s)
     {
         int i = 0, j = s.size() - 1;
