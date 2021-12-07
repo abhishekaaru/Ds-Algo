@@ -25,13 +25,13 @@ string longestPalindrome(string s) {
             int j=i,k=i;
             
             while(k<n-1 && s[k+1]==s[k]){
-                k++;
+                k++; // skip the duplicates
             }
             
             i = k+1;
             
             while(k < n-1 && j>0 && s[k+1]==s[j-1]){
-                k++;
+                k++;   // expand
                 j--;
             }
             
