@@ -1,6 +1,21 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// kadene's
+int maxSubArray(vector<int>& a) {
+        int sum = 0;
+        int n = a.size();
+        int maxx = INT_MIN;
+        
+        for(int i=0;i<n;i++){
+            sum = max(a[i],sum+a[i]);
+            
+            maxx = max(sum,maxx);
+        }
+        
+        return maxx;
+    }
+
 int main(){
     int n;
     cout<<"Enter the size of array"<<endl;
