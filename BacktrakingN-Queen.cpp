@@ -89,3 +89,51 @@ int main(){
 }
 
 // n = 4
+
+
+class Solution {
+public:
+    void solve(int col,int n,vector<string> &board,vector<vector<string>> &v,
+               vector<int> &LeftRow,vector<int> &LowDig,vector<int> &UpDig){
+        
+        if(col == n){
+            v.push_back(board);
+            return;
+        }
+        
+        for(int row=0;row<n;row++){
+            if(LeftRow[row]==0 && LowDig[row+col]==0 && UpDig[n-1+(col-row)]==0){
+                
+                board[row][col] = 'Q';
+                LeftRow[row] = 1;
+                LowDig[row+col] = 1;
+                UpDig[n-1+(col-row)] = 1;
+                
+                solve(col+1,n,board,v,LeftRow,LowDig,UpDig);
+                
+                board[row][col] = '.';
+                LeftRow[row] = 0;
+                LowDig[row+col] = 0;
+                UpDig[n-1+(col-row)] = 0;
+            }
+        }
+    }
+    vector<vector<string>> solveNQueens(int n) {
+        vector<vector<string>> v;
+        vector<string> board(n);
+        string s(n,'.');
+        
+        for(int i=0;i<n;i++){
+            board[i] = s;
+        }
+        
+        vector<int> leftRow(n,0);
+        vector<int> LowDig(2*n-1,0);
+        vector<int> UpDig(2*n-1,0);
+        
+        solve(0,n,board,v,leftRow,LowDig,UpDig);
+        
+        return v;
+        
+    }
+};
